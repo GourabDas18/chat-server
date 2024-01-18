@@ -10,7 +10,7 @@ credential: admin.credential.cert({
     "client_email": `${process.env.CLIENT_EMAIL}`,
     "project_id": `${process.env.PROJECT_ID}`
 })});
-app.use(cors())
+app.use(cors({ origin: ["http://localhost:5000", "https://sancho.netlify.app"] }));
 app.use(express.urlencoded({extended: true}))
 app.use(express.json());
 app.post('/send',(req,res)=>{
