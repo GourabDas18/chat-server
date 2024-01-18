@@ -19,12 +19,20 @@ app.post('/send',(req,res)=>{
             title: req.body.name,
             body: req.body.message,
           },
+          data:{
+            icon : req.body.icon
+          },
+          webpush: {
+            fcm_options: {
+              link: "https://sancho.netlify.app"
+            }
+          },
         token: req.body.id,
       };
       admin.messaging().send(send_message).then(val=>{console.log(val);
         res.send("Done")
     
-    }).catch(error=>{console.log(error)});
+    }).catch(error=>{console.log(error);res.send("error")});
    
 })
 
